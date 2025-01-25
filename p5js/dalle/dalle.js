@@ -1,12 +1,14 @@
-let API_URL = "https://api.openai.com/v1/chat/completions";
+let API_URL = "https://api.openai.com/v1/images/generations";
 
-async function chatCompletion(messages, model = "gpt-4o-2024-08-06", max_tokens = 200) {
+async function imageGeneration(prompt, model = "dall-e-2", n_images = 1, size = 1024) {
   let res = await fetch(API_URL, {
     method: "POST",
     body: JSON.stringify({
       model,
-      max_tokens,
-      messages,
+      prompt,
+      n: n_images,
+      size: `${size}x${size}`,
+      response_format: "b64_json",
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -14,5 +16,5 @@ async function chatCompletion(messages, model = "gpt-4o-2024-08-06", max_tokens 
     },
   });
   let json = await res.json();
-  return json.choices[0].message.content;
+  return json.data;
 }

@@ -29,5 +29,5 @@ async function mousePressed() {
       { type: "image_url", image_url: { url: encodeImg(mImg) } },
     ],
   }];
-  mCaption = await chatCompletions(mMessages);
+  mCaption = await chatCompletion(mMessages);
 }
