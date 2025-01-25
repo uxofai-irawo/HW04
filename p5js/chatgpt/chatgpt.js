@@ -1,6 +1,6 @@
 let API_URL = "https://api.openai.com/v1/chat/completions";
 
-async function chat(messages, model = "gpt-4o-2024-08-06", max_tokens = 200) {
+async function chatCompletions(messages, model = "gpt-4o-2024-08-06", max_tokens = 200) {
   let res = await fetch(API_URL, {
     method: "POST",
     body: JSON.stringify({
