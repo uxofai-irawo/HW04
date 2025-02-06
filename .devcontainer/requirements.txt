@@ -1,5 +1,6 @@
 ipykernel
 ipywidgets
+google-genai
 openai
 Pillow
 torch
