@@ -1,7 +1,12 @@
-import { Ollama } from "https://cdn.jsdelivr.net/npm/ollama@0.5.12/browser/+esm";
+let Ollama;
 
-const ollama = new Ollama({ host: "https://steel-exp-february-hired.trycloudflare.com" });
+async function loadModule() {
+  try {
+    const module = await import("https://cdn.jsdelivr.net/npm/ollama@0.5.13/browser/+esm");
+    Ollama = module.Ollama;
+  } catch (error) {
+    console.error("Failed to load module:", error);
+  }
+}
 
-Object.defineProperty(window, "ollama", {
-  get() { return ollama; },
-});
+loadModule();

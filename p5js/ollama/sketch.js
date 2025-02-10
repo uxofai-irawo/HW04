@@ -1,7 +1,11 @@
 let mImg;
+let mOllama;
 
-function preload() {
+let API_URL = "https://allergy-work-partners-section.trycloudflare.com";
+
+async function preload() {
   mImg = loadImage("../../imgs/GDTM.jpg");
+  mOllama = new Ollama({ host: API_URL });
 }
 
 function encodeImg(img) {
@@ -23,7 +27,7 @@ function draw() {
 }
 
 async function mousePressed() {
-  let response = await ollama.chat({
+  let response = await mOllama.chat({
     model: "llava",
     messages: [{
       role: "user",
@@ -34,7 +38,7 @@ async function mousePressed() {
   });
   mCaption = response.message.content;
 
-  let txtResponse = await ollama.chat({
+  let txtResponse = await mOllama.chat({
     model: "llama3.2:1b",
     messages: [{ role: "user", content: "Who is Gudetama?" }],
     options: { num_predict: 120 }
