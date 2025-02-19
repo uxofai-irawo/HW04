@@ -14,5 +14,5 @@ async function chatCompletion(messages, model = "gpt-4o-2024-08-06", max_tokens 
     },
   });
   let json = await res.json();
-  return json.choices[0].message.content;
+  return json; //.choices[0].message.content;
 }

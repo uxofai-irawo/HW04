@@ -1,7 +1,12 @@
 let mImg;
 let mOllama;
 
-let API_URL = "https://allergy-work-partners-section.trycloudflare.com";
+let mDim;
+
+let mInput;
+let mButton;
+
+let API_URL = "https://karaoke-kerry-partially-telephony.trycloudflare.com/";
 
 async function preload() {
   mImg = loadImage("../../imgs/GDTM.jpg");
@@ -16,33 +21,36 @@ function encodeImg(img) {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textSize(20);
+  textSize(12);
+  mDim = min(width / 2 - 8, (height - 32) / 2 - 8);
+
+  mInput = createInput("Type how you're feeling...");
+  mInput.position(4, 4);
+  mInput.size(2 * mDim + 4, 24);
+
+  mButton = createButton("Generate");
+  mButton.position(2 * mDim + 12, 4);
+  mButton.mousePressed(runGenerate);
 }
 
 let mCaption = "";
 function draw() {
   background(220);
+  /*
   image(mImg, 0, 0);
-  text(mCaption, 0, mImg.height + 4, width, 500);
+  */
+  text(mCaption, 30, 50, width*0.75, windowHeight);
 }
 
-async function mousePressed() {
-  let response = await mOllama.chat({
-    model: "llava",
-    messages: [{
-      role: "user",
-      content: "What is in this image?",
-      images: [ encodeImg (mImg) ]
-    }],
-    options: { num_predict: 100 }
-  });
-  mCaption = response.message.content;
-
+async function runGenerate() {
+  
   let txtResponse = await mOllama.chat({
-    model: "llama3.2:1b",
-    messages: [{ role: "user", content: "Who is Gudetama?" }],
-    options: { num_predict: 120 }
+    model: "Ex-Rockstar/sahara:latest",
+    messages: [{ role: "user", content: mInput.value() }],
+    options: { num_predict: 300 }
   });
 
-  mCaption += "\n\n---\n\n" + txtResponse.message.content;
+  mCaption += "You: " + mInput.value() + "\n\n" + "HugBot: " + txtResponse.message.content + "\n---\n";
+  print(mInput.value());
+  print(txtResponse.message.content);
 }
