@@ -33,6 +33,5 @@ In this interaction, I tried to build a more linear conversation that built on i
 <img width="1160" alt="image" src="https://github.com/user-attachments/assets/41978dc3-1eae-4088-a27c-38d3f4757f75" />  
 
 
-This was an attempt at looking at more specific mental health illnesses or conditions to see if the responses and suggestions could be more specific. These I would say were not great responses as they basically reworded the same advice in different ways with a couple of variation for each mental disorder mentioned. Each response articulated something of "reaching out to friends", "talk to a therapist", and "self-care" all of which with very similar language and not building on one another (i.e. it didn't assume that the use had multiple of these conditions, it just responded one at a time.)
----  
+This was an attempt at looking at more specific mental health illnesses or conditions to see if the responses and suggestions could be more specific. These I would say were not great responses as they basically reworded the same advice in different ways with a couple of variation for each mental disorder mentioned. Each response articulated something of "reaching out to friends", "talk to a therapist", and "self-care" all of which with very similar language and not building on one another (i.e. it didn't assume that the use had multiple of these conditions, it just responded one at a time.)  
 
